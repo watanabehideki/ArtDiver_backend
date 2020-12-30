@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  post '/signup', to: 'registrations#signup'
-
-  post '/login', to: 'sessions#login'
-  delete '/logout', to: 'sessions#logout'
-  get '/logged_in', to: 'sessions#logged_in?'
+  mount_devise_token_auth_for 'User', at: 'auth'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
