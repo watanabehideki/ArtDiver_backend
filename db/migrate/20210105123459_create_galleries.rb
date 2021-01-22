@@ -9,6 +9,7 @@ class CreateGalleries < ActiveRecord::Migration[6.0]
       t.string :open_time
       t.string :holiday
       t.text :url
+      t.text :image_file
 
       t.timestamps
     end
