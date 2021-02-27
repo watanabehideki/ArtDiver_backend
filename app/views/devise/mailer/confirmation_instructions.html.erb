@@ -1,0 +1,9 @@
+<p><%= @email %> さん</p>
+<p>ようこそArtDiverへ！</p>
+
+<p>下記リンクを開いて、本登録を完了して下さい</p>
+
+<p><%= link_to '本登録を完了してログインページへ', 
+confirmation_url(@resource, {confirmation_token: @token, config: message['client-config'].to_s, redirect_url: message['redirect-url']}).html_safe %></p>
+
+<%# <p><%= link_to '本登録を完了してログインページへ', confirmation_url(@resource, confirmation_token: @token, config: message['client-config'], redirect_url: message['redirect-url']) %></p> 

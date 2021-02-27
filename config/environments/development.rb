@@ -1,4 +1,6 @@
 Rails.application.configure do
+
+  require 'dotenv'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -26,23 +28,25 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  # config.active_storage.service = :amazon
+  ##
 
+  config.mailer_sender = 'noreply@artdiver.org'
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_options = { from: ENV['EMAIL_ADDRESS'] }
-  config.action_mailer.default_url_options = { host: 'localhost:4000' }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost:4001' }
+  Dotenv.load
+  config.action_mailer.delivery_method = :aws_sdk
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'email-smtp.ap-northeast-1.amazonaws.com',
     port: 587,
-    domain: 'gmail.com',
-    user_name: ENV['EMAIL_ADDRESS'],
-    password: ENV['EMAIL_PASSWORD'],
-    authentication: 'plain',
+    user_name: ENV['SES_SMTP_USER'],
+    password: ENV['SES_SMTP_PASSWORD'],
+    domain: 'artdiver.org',
+    authentication: 'login',
     enable_starttls_auto: true
   }
 

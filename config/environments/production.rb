@@ -30,7 +30,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  # config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -53,8 +53,21 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "artdiver_production"
-
+  
+  config.mailer_sender = 'noreply@artdiver.org'
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'https://backend.artdiver.org' }
+  config.action_mailer.delivery_method = :aws_sdk
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.ap-northeast-1.amazonaws.com',
+    port: 587,
+    user_name: ENV['SES_SMTP_USER'],
+    password: ENV['SES_SMTP_PASSWORD'],
+    domain: 'artdiver.org',
+    authentication: 'login',
+    enable_starttls_auto: true
+  }
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

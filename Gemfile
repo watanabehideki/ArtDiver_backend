@@ -26,7 +26,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 gem 'devise'
 gem 'devise_token_auth'
-gem 'aws-sdk-s3', '1.46.0', require: false
+gem 'aws-ses', '~> 0.6'
+gem 'aws-sdk-rails', '~> 3'
+gem 'dotenv-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

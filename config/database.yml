@@ -14,12 +14,14 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: <%= ENV.fetch('MYSQL_ROOT_PASSWORD') { 'mysql_root_password' } %>
-  host: mysql
+  password: 
 
 development:
   <<: *default
   database: artdiver_development
+  username: root
+  password: <%= ENV.fetch('MYSQL_ROOT_PASSWORD') { 'mysql_root_password' } %>
+  host: mysql
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -49,6 +51,6 @@ test:
 #
 production:
   <<: *default
-  database: artdiver_production
-  username: artdiver
-  password: <%= ENV['ARTDIVER_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  host: <%= ENV['DB_HOST'] %>
+  url: <%= ENV['DB_URL'] %>

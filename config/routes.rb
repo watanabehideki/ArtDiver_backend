@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :galleries,only:[:index,:show]
-  resources :exhibitions,only:[:index,:show]
+  namespace :api do
+    namespace :v1 do 
+      resources :galleries,only:[:index,:show]
+      resources :exhibitions,only:[:index,:show]
+      get :health_check, to: 'health_check#index'
+    end
+  end
+
   mount_devise_token_auth_for 'User', at: 'auth',
   controllers: {
     registrations: 'auth/registrations'
