@@ -21,6 +21,7 @@ Bundler.require(*Rails.groups)
 
 module Artdiver
   class Application < Rails::Application
+    config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
@@ -41,7 +42,7 @@ module Artdiver
     config.middleware.use ActionDispatch::Flash
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:4000'
+        origins ['https://artdiver.org', 'http://localhost:5000']
         resource '*',
                  :headers => :any,
                  :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
