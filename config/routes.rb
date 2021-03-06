@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, {format: 'json'} do
     namespace :v1 do 
-      resources :galleries,only:[:index,:show]
-      resources :exhibitions,only:[:index,:show]
+      resources :galleries,   only: [:index,:show]
+      resources :exhibitions, only: [:index,:show]
+      resources :microposts,  only: [:index, :create, :destroy]
+      resources :users, only: [:show] 
       get :health_check, to: 'health_check#index'
     end
   end

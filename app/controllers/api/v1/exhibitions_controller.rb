@@ -3,9 +3,9 @@ module Api
     class ExhibitionsController < ApplicationController
     
       def index
-        exhibitions = Exhibition.includes(:gallery)
+        @exhibitions = Exhibition.includes(:gallery)
     
-        render json: exhibitions.as_json(include: :gallery) 
+        render json: @exhibitions.as_json(include: :gallery) 
       end
     
       def show
