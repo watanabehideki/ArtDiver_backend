@@ -9,8 +9,7 @@ module Api
       end
     
       def show
-        exhibition = Exhibition.includes(:gallery).find(params[:id]) 
-        render json:  exhibition.as_json(include: :gallery) 
+        @exhibition = Exhibition.includes(:gallery).find(params[:id]) 
       end
     
     end
