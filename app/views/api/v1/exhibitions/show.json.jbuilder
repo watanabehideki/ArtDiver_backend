@@ -1,0 +1,13 @@
+  json.id @exhibition.id
+  json.title @exhibition.title
+  json.content @exhibition.content
+  json.tel @exhibition.tel
+  json.start_date @exhibition.start_date
+  json.end_date @exhibition.end_date
+  json.open_time @exhibition.open_time
+  json.holiday @exhibition.holiday
+  json.url @exhibition.url
+  json.admission @exhibition.admission
+  json.image @exhibition.exhibition_image.url
+  json.gallery_name @exhibition.gallery.name
+  json.gallery_location @exhibition.gallery.location

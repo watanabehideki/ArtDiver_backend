@@ -29,6 +29,10 @@ gem 'devise_token_auth'
 gem 'aws-ses', '~> 0.6'
 gem 'aws-sdk-rails', '~> 3'
 gem 'dotenv-rails'
+gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
+
+
 
 
 group :development, :test do
